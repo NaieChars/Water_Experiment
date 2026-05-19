@@ -2,6 +2,7 @@ add_executable(fbm_water
     src/main.cpp
     resources/shaders/water.fs
     resources/shaders/water.vs
+    scripts/calc_ssim.py
     )
 
 

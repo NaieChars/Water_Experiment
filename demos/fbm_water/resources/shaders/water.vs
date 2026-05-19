@@ -84,19 +84,19 @@ float snoise(vec3 v) {
     return 42.0 * dot( m*m, vec4( dot(p0,x0), dot(p1,x1), dot(p2,x2), dot(p3,x3) ) );
 }
 // ============================================================
+#define MAX_OCTAVES 8
 
 float fbm(vec3 p) {
     float value = 0.0;
     float amplitude = 1.0;
     float frequency = 1.0;
-    float maxValue = 0.0;
-    for(int i = 0; i < uOctaves; i++) {
+    for(int i = 0; i < MAX_OCTAVES; i++) {
+        if(i >= uOctaves) break;
         value += amplitude * snoise(p * frequency);
-        maxValue += amplitude;
         frequency *= uLacunarity;
         amplitude *= uPersistence;
     }
-    return value / maxValue; // 大致归一化到 [-1, 1]
+    return value / 1.96875;   // 固定归一化，保证所有参数组低频振幅一致
 }
 
 void main() {
