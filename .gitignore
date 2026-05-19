@@ -1,0 +1,20 @@
+# build artifacts
+build/
+out/
+cmake-build-*/
+
+# Visual Studio
+.vs/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+
+# binaries
+*.exe
+*.dll
+*.lib
+*.pdb
+
+# temp
+*.log
